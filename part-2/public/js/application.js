@@ -1,6 +1,7 @@
 "use strict"
 
 $(document).ready(function(){
+
   $('.sidebar').on('submit','#new-post-form', function(event){
     event.preventDefault()
     var $form = $(event.target);
@@ -17,13 +18,7 @@ $(document).ready(function(){
     })
   })
 
-// $(document).ready(function(){
-
-
-// })
-
-
-
-
-
+  $('#post-list').on('submit', '.new-post-like-form', function(event){
+    event.preventDefault()
+  })
 })

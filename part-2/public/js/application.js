@@ -1,11 +1,9 @@
-"use strict"
 
 $(document).ready(function(){
 
   $('.sidebar').on('submit','#new-post-form', function(event){
     event.preventDefault()
     var $form = $(event.target);
-    console.log($form.serialize)
     $.ajax({
       type: "POST",
       url: $form.attr("action"),
@@ -20,5 +18,15 @@ $(document).ready(function(){
 
   $('#post-list').on('submit', '.new-post-like-form', function(event){
     event.preventDefault()
+    var $likebutton = $(this);
+    var url = $(this).closest('form').attr('action')
+    $.ajax({
+      type: "PUT",
+      url: url,
+      success: function(response){
+        $likebutton.closest('article').find('span#likes').html(response)
+      }
+    })
+
   })
 })
